@@ -1,0 +1,168 @@
+*{
+    padding: 0;margin: 0;
+    color: white;
+}
+
+.dropdown {
+  width: 4rem;
+}
+
+.container li{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.options{
+  margin-left: 25px;
+}
+.dropdown button {
+  border: none;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dropdown-options {
+  margin-top: 12px;
+  display: none;
+  overflow: auto;
+  border-radius: 7px;
+  background-color: rgb(149, 224, 254); 
+  backdrop-filter: blur(5px);
+}
+
+.dropdown-options a {
+  margin-left: 10px;
+  margin-right: 10px;
+ text-align: center;
+  display: block;
+  padding: 3px;
+  text-decoration: none;
+  color: orange;
+}
+.dropdown-options a:hover{
+  font-size: larger;
+}
+
+.dropdown-options::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  backdrop-filter: blur(0.1px); 
+  z-index: -1;
+}
+
+.dropdown:hover .dropdown-options {
+  display: block;
+}
+
+body{
+  background-image: url(../images/sky-sunset.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#temp{
+  font-weight: bolder;
+  font-size: 4vw;
+}
+#desc{
+  font-size: larger;
+  padding-bottom: 3%;
+}
+#city-name{
+  font-family: 'Merriweather', serif;
+}
+#status{
+  font-size: 300%;
+  font-family: 'Open Sans', sans-serif;
+}
+#orange{
+  color: orange;
+}
+#light-orange{
+  color: rgb(251, 201, 108);
+}
+#light-blue{
+  color: #1E90FF ;
+  fill: orange;
+}
+.forecast-desc{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.footer{
+  bottom: 0;
+  width: 100%;
+  padding-top: 25px;
+}
+  
+  .main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+   
+  .left {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .left img{
+    height: auto;
+    width: 60px;
+  }
+
+  .latlang p{
+    color: 	white;
+    font-family: 'Rajdhani', sans-serif;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  @media screen and (min-width: 801px) {
+    .latlang p{
+      color: rgb(255, 178, 36);
+      font-weight: 700;
+    }
+    .left img{
+      width: 7vw;
+      height: auto;
+    }
+  }
+
+  .middle {
+    flex: 2;
+    text-align: center;
+  }
+  
+  .right {
+    flex: 1;
+    text-align: right;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+  .forecast{
+    margin: 2% 1% 2% 1%;
+  }
+
+  .inner-div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  .forecast-inner, .forecast-second{
+    text-align: center;
+  }
