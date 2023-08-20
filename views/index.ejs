@@ -3,38 +3,60 @@
 <div class="main">
   <div class="left">
     <div class="icon">
-      <img src="http://openweathermap.org/img/w/<%= icon %>.png" alt="weather-icon" />
+       <% if(locals.icon){ %>
+        <img src="http://openweathermap.org/img/w/<%= icon %>.png" alt="weather-icon" />
+        <% } %>
     </div>
 
-    <p id="temp"><%= temp.toFixed(2) %> °c</p>
+    <% if(locals.temp){ %>
+      <p id="temp"><%= temp.toFixed(2) %> °c</p>
+      <% } %>
+
     <p >
       <!-- location-icon -->
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
       <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
       <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
     </svg>
-    <%= city %></p>
+
+    <% if(locals.city){ %>
+      <%= city %>
+      <% } %>
+      </p>
     <p>
       <!-- clouds-icon -->
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-clouds" viewBox="0 0 16 16">
       <path d="M16 7.5a2.5 2.5 0 0 1-1.456 2.272 3.513 3.513 0 0 0-.65-.824 1.5 1.5 0 0 0-.789-2.896.5.5 0 0 1-.627-.421 3 3 0 0 0-5.22-1.625 5.587 5.587 0 0 0-1.276.088 4.002 4.002 0 0 1 7.392.91A2.5 2.5 0 0 1 16 7.5z"/>
       <path d="M7 5a4.5 4.5 0 0 1 4.473 4h.027a2.5 2.5 0 0 1 0 5H3a3 3 0 0 1-.247-5.99A4.502 4.502 0 0 1 7 5zm3.5 4.5a3.5 3.5 0 0 0-6.89-.873.5.5 0 0 1-.51.375A2 2 0 1 0 3 13h8.5a1.5 1.5 0 1 0-.376-2.953.5.5 0 0 1-.624-.492V9.5z"/>
-    </svg>
-    <%= clouds %>%</p>
+      </svg>
+      <% if(locals.clouds){ %>
+        <%= clouds %>%
+        <% } %>
+     
+    </p>
   </div>
   <div class="middle">
-   
-    <h2 id="city-name"><%= city %></h2>
-    <h1 id="status"><%= main %></h1>
-    <p id="desc">feels like <%= description %>..</p>
+
+    <% if(locals.city && locals.main && locals.description){ %>
+      <h2 id="city-name"><%= city %></h2>
+      <h1 id="status"><%= main %></h1>
+      <p id="desc">feels like <%= description %>..</p>
+      <% } %>
+    
     <div class="d-flex justify-content-center latlang flex-wrap">
+      <% if(locals.lati){ %>
+        <p> latitude: <%= lati %></p>
+        <% } %>
       
-      <p> latitude: <%= lati %></p>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-compass" viewBox="0 0 16 16">
         <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
         <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
       </svg>
-      <p> longitude: <%= long %></p>
+
+      <% if(locals.long){ %>
+        <p> longitude: <%= long %></p>
+        <% } %>
+      
     </div>
       
     <div class="d-flex justify-content-center latlang flex-wrap">
@@ -45,10 +67,16 @@
           <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"/>
         </svg>
 
-        max-temp: <%= maxtemp.toFixed(2) %>°C
+        <% if(locals.maxtemp){ %>
+          max-temp: <%= maxtemp.toFixed(2) %>°C
+          <% } %>
+       
       </p>
       <p>
-        min-temp: <%= mintemp.toFixed(2) %>°C
+        <% if(locals.mintemp){ %>
+          min-temp: <%= mintemp.toFixed(2) %>°C
+          <% } %>
+       
          <!-- low-temp-icon -->
          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-thermometer-low" viewBox="0 0 16 16">
           <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V9.5a.5.5 0 0 1 1 0v1.585a1.5 1.5 0 0 1 1 1.415z"/>
@@ -63,11 +91,17 @@
         <path d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708l1.5-1.5zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM11.709 11.5a4 4 0 1 0-7.418 0H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
       </svg>
       <!-- sunrise-time -->
-       <%= sunrise %>
+      <% if(locals.sunrise){ %>
+        <%= sunrise %>
+        <% } %>
+      
       </p>
       <p>
       <!-- sunset-time -->
-      <%= sunset %>
+      <% if(locals.sunset){ %>
+        <%= sunset %>
+        <% } %>
+     
        <!-- sunset-icon -->
        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-sunset" viewBox="0 0 16 16">
         <path d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708l1.5 1.5zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7zm3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
@@ -84,7 +118,11 @@
       <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5h-2zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a28.458 28.458 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a28.458 28.458 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001L7 1.5zm0 0-.364-.343L7 1.5zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267z"/>
     </svg>
       <!-- humidity in percentage -->
-     <%= humidity %>%</h2>
+      <% if(locals.humidity){ %>
+        <%= humidity %>%
+        <% } %>
+    
+    </h2>
     <p>Pressure :</p>
     <h2>
       <!-- pressure-icon -->
@@ -93,7 +131,11 @@
       <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
     </svg>
     <!-- pressure in hpa -->
-    <%= pressure %>hPa</h2>
+    <% if(locals.pressure){ %>
+      <%= pressure %>
+      <% } %>
+    
+    hPa</h2>
     <p>wind speed :</p>
     <h2>
       <!-- wind speed-icon -->
@@ -101,49 +143,58 @@
       <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z"/>
     </svg>
       <!-- windspeed in km/h -->
-    <%= wind %>km/h</h2>
+      <% if(locals.wind){ %>
+        <%= wind %>
+        <% } %>
+   
+    km/h</h2>
   </div>
 </div>
 
 <div class="forecast">
     <div class="row" >
 
-      <% for(let i=0; i<6; i++){ %>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-          <div class="inner-div" >
-             <div  class="forecast-main d-flex justify-content-between">
-              <!-- time -->
-              <p id="orange"><%= next18Hours[i].dt_txt.slice(10,16) %> GMT</p>
-              <!-- weather-icon -->
-              <img src="http://openweathermap.org/img/w/<%= next18Hours[i].weather[0].icon %>.png" alt="weather-icon" />
-             </div>
-            <div id="light-orange" class="forecast-inner">
-                  <h2><%= (next18Hours[i].main.temp - 273.15).toFixed(2) %>°c</h2>
-              <p class="forecast-desc"  id="light-blue" > <%=  JSON.parse(JSON.stringify(next18Hours[i].weather[0].description)) %></p>
-            </div>
-            <div  class="forecast-second d-flex justify-content-around">
-                <p id="light-blue" >
-                  <!-- wind speed-icon -->
-                  <svg id="light-blue"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
-                  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-                 <!-- windspeed in km/h -->
-                <%= (next18Hours[i].wind.speed * 3.6).toFixed(2) %>km/h</p>
+      <% if(locals.next18Hours){ %>
 
-                <p id="light-blue" >
-                   <!-- humidity-icon -->
-                  <svg id="light-blue"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moisture" viewBox="0 0 16 16">
-                  <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5h-2zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a28.458 28.458 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a28.458 28.458 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001L7 1.5zm0 0-.364-.343L7 1.5zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267z"/>
-                </svg>
-                 <!-- pressure in hpa -->
-                <%= next18Hours[i].main.humidity %>%</p>
+        <% for(let i=0; i<6; i++){ %>
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <div class="inner-div" >
+               <div  class="forecast-main d-flex justify-content-between">
+                <!-- time -->
+                <p id="orange"><%= next18Hours[i].dt_txt.slice(10,16) %> GMT</p>
+                <!-- weather-icon -->
+                <img src="http://openweathermap.org/img/w/<%= next18Hours[i].weather[0].icon %>.png" alt="weather-icon" />
+               </div>
+              <div id="light-orange" class="forecast-inner">
+                    <h2><%= (next18Hours[i].main.temp - 273.15).toFixed(2) %>°c</h2>
+                <p class="forecast-desc"  id="light-blue" > <%=  JSON.parse(JSON.stringify(next18Hours[i].weather[0].description)) %></p>
+              </div>
+              <div  class="forecast-second d-flex justify-content-around">
+                  <p id="light-blue" >
+                    <!-- wind speed-icon -->
+                    <svg id="light-blue"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+                    <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z"/>
+                  </svg>
+                   <!-- windspeed in km/h -->
+                  <%= (next18Hours[i].wind.speed * 3.6).toFixed(2) %>km/h</p>
+  
+                  <p id="light-blue" >
+                     <!-- humidity-icon -->
+                    <svg id="light-blue"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moisture" viewBox="0 0 16 16">
+                    <path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5h-2zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a28.458 28.458 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a28.458 28.458 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001L7 1.5zm0 0-.364-.343L7 1.5zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267z"/>
+                  </svg>
+                   <!-- pressure in hpa -->
+                  <%= next18Hours[i].main.humidity %>%</p>
+              </div>
             </div>
+           
           </div>
-         
-        </div>
         <% } %>
+
+
+      <% } %>
     
-      </div>
+      
     </div>
   </div>
 
