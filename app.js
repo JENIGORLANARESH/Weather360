@@ -8,7 +8,7 @@ const port = 3000;
 
 const API_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
-const yourBearerToken = "";//enter your key
+const yourBearerToken = "3117a6dfcf314fa78987c434b17caecf";//enter your key
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
