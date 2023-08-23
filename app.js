@@ -8,7 +8,7 @@ const port = 3000;
 
 const API_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
-const yourBearerToken = "3117a6dfcf314fa78987c434b17caecf";//enter your key
+const yourBearerToken = "3117a6dfcf314fa78987c434b17caecf";
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,16 +36,22 @@ app.get("/:postName", async (req, res) => {
       FORECAST_URL + requestedTitle + "&appid=" + yourBearerToken
     );
     const Weather = result.data;
-
-    const sunrise = Weather.sys.sunrise;
+    
     const sunset = Weather.sys.sunset;
+    const sunrise = Weather.sys.sunrise;
+    // console.log(sunrise);
+   
     const riseTime = new Date(sunrise * 1000).toUTCString();
     const setTime = new Date(sunset * 1000).toUTCString();
-    
+
+    var sunriseIST = new Date(riseTime).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
+    var sunsetIST = new Date(setTime).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
+   
     const forecastList = forecastresult.data.list;
 
     const currentDate = new Date();
     const currentTime = currentDate.getTime();
+    // console.log(currentTime);
 
     const next18Hours = [];
     for (const forecast of forecastList) {
@@ -71,8 +77,8 @@ app.get("/:postName", async (req, res) => {
       humidity: Weather.main.humidity,
       pressure: Weather.main.pressure,
       wind: (Weather.wind.speed * 3.6).toFixed(2),
-      sunrise: riseTime,
-      sunset: setTime,
+      sunrise: sunriseIST,
+      sunset: sunsetIST,
       
       next18Hours: next18Hours,
     });
